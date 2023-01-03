@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.title('My Parents New Healthy Diner')
-
-st.header('Mom\'s Magic') #specail characters handling
+st.title('My Mom\'s New Healthy Diner') #special characters handling are to done with '\'
 
 st.header(":red[Breakfast Favourites]")
 
@@ -24,3 +22,7 @@ my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/da
 st.dataframe(my_fruit_list)  ##streamlit library to display it on the page by typin
 
 my_fruit_list = my_fruit_list.set_index('Fruit')  #setting index on the basis of fruits
+
+st.multiselect('Pick some fruits:', list(my_fruit_list.index))  #adding a multi selector on the basis of indexing in the DF
+
+st.dataframe(my_fruit_list)  #add
