@@ -14,4 +14,4 @@ st.text('🥑 Avacado Toast')
 
 st.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
-st.header('Mom\'s Magic'
+st.header('Mom\'s Magic')
