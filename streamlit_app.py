@@ -23,7 +23,7 @@ st.dataframe(my_fruit_list)  ##streamlit library to display it on the page by ty
 
 my_fruit_list = my_fruit_list.set_index('Fruit')  #setting index on the basis of fruits
 
-fruits_selected = st.multiselect('Pick some fruits:', list(my_fruit_list.index))  #adding a multi selector on the basis of indexing in the DF
+fruits_selected = st.multiselect('Pick some fruits:', list(my_fruit_list.index), ['Avocado','Strawberries'])  #adding a multi selector on the basis of indexing in the DF
 
 #We'll ask our app to put the list of selected fruits into a variable called fruits_selected. 
 #Then, we'll ask our app to use the fruits in our fruits_selected list to pull rows from the full data set (and assign that data to a variable called fruits_to_show).
