@@ -23,6 +23,6 @@ st.dataframe(my_fruit_list)  ##streamlit library to display it on the page by ty
 
 my_fruit_list = my_fruit_list.set_index('Fruit')  #setting index on the basis of fruits
 
-st.multiselect('Pick some fruits:', list(my_fruit_list.index))  #adding a multi selector on the basis of indexing in the DF
+st.multiselect('Pick some fruits:', list(my_fruit_list.index), ['Avocado','Strawberries'])  #adding a multi selector on the basis of indexing in the DF
 
-st.dataframe(my_fruit_list)  #add
+st.dataframe(my_fruit_list)  #Display a dataframe as an interactive table.
