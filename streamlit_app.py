@@ -40,3 +40,9 @@ st.header("Fruityvice Fruit Advice!") #adding header
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 st.text(fruityvice_response.json())
+
+
+#Normalize semi-structured JSON data into a flat table. 
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+#Display a dataframe as an interactive table.
+st.dataframe(fruityvice_normalized)
