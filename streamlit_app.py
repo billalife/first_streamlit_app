@@ -43,6 +43,6 @@ st.text(fruityvice_response.json())
 
 
 #Normalize semi-structured JSON data into a flat table. 
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 #Display a dataframe as an interactive table.
 st.dataframe(fruityvice_normalized)
