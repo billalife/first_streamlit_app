@@ -39,7 +39,6 @@ st.header("Fruityvice Fruit Advice!") #adding header
 
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response.json())
 
 
 #Normalize semi-structured JSON data into a flat table. 
