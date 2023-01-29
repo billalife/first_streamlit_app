@@ -77,20 +77,51 @@ try:
                 back_from_function = get_fruityvice_data(fruit_choice)
                 st.dataframe(back_from_function)
 #dont run anything post this point or troublshooting 
-st.stop()
+#st.stop()
 
-#sending message from snowflake i.e checking if the connection works
-my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * from fruit_load_list")
-my_data_rows = my_cur.fetchall() #fetches all records from fruit_load_list table 
-st.text("The fruit load list contains:")
-st.text(my_data_rows)
+#sending message from snowflake i.e checking if the connection works, from here to line 88 got changed into a function
+#my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+#my_cur = my_cnx.cursor()
+#my_cur.execute("SELECT * from fruit_load_list")
+#my_data_rows = my_cur.fetchall() #fetches all records from fruit_load_list table 
+#st.text("The fruit load list contains:")
+#st.text(my_data_rows)
+
+
+st.header("The fruit load list contains:")
+#Snowflake-related function
+def get_fruit_list():
+        with my_cnx.cursor() as my_cur:
+                my_cur.execute("SELECT * from fruit_load_list")
+                retrun my_cur.fetchall()  #fetches all records from fruit_load_list table
+#add a button to load the fruit                
+if st.button('Get Fruit load list'):
+        my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+        my_data_rows = get_fruit_list()
+        st.dataframe(my_data_rows)
+        
 
 #adding new box for the user to pick fruits, Allow the end user to add fruit 
-
-add_my_fruit = st.text_input('What fruit would you like add?','Jackfruit')
-st.write("Thanks for adding ", add_my_fruit)
+#add_my_fruit = st.text_input('What fruit would you like add?','Jackfruit')
+#st.write("Thanks for adding ", add_my_fruit)
 
 #Understanding Control flow 
-my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('from st')") 
+#my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('from st')") 
+
+#Adding a new function for the final block to select fruits
+def insert_row_nowflake(new_fruit):
+        with my_cnx.cursor() as my_cur:
+                my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('from st')")
+                return "Thanks for adding " + new_fruit
+add_my_fruit = st.text_input('What fruit would you like add?')
+if st.button('Add a fruit to the list'):
+        my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+        back_from_function = insert_row_nowflake(fruit_choice)
+        st.text(back_from_function)
+        
+        
+                
+        
+
+
+
