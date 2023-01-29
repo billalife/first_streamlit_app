@@ -79,7 +79,7 @@ try:
 except URLError as e:
         st.error()
 #dont run anything post this point or troublshooting 
-st.stop()
+#st.stop()
 
 #sending message from snowflake i.e checking if the connection works, from here to line 88 got changed into a function
 #my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
@@ -90,7 +90,7 @@ st.stop()
 #st.text(my_data_rows)
 
 
-#st.header("The fruit load list contains:")
+st.header("The fruit load list contains:")
 #Snowflake-related function
 #def get_fruit_list():
 #        with my_cnx.cursor() as my_cur:
