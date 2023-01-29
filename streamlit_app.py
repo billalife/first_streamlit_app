@@ -90,17 +90,17 @@ except URLError as e:
 #st.text(my_data_rows)
 
 
-st.header("The fruit load list contains:")
+#st.header("The fruit load list contains:")
 #Snowflake-related function
-def get_fruit_list():
-        with my_cnx.cursor() as my_cur:
-                my_cur.execute("SELECT * from fruit_load_list")
-                return my_cur.fetchall()  #fetches all records from fruit_load_list table
+#def get_fruit_list():
+ #       with my_cnx.cursor() as my_cur:
+#                my_cur.execute("SELECT * from fruit_load_list")
+#                return my_cur.fetchall()  #fetches all records from fruit_load_list table
 #add a button to load the fruit                
-if st.button('Get Fruit load list'):
-        my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-        my_data_rows = get_fruit_list()
-        st.dataframe(my_data_rows)        
+#if st.button('Get Fruit load list'):
+#        my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+#        my_data_rows = get_fruit_list()
+#        st.dataframe(my_data_rows)        
 
 #adding new box for the user to pick fruits, Allow the end user to add fruit 
 #add_my_fruit = st.text_input('What fruit would you like add?','Jackfruit')
@@ -110,18 +110,46 @@ if st.button('Get Fruit load list'):
 #my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('from st')") 
 
 #Adding a new function for the final block to select fruits
-def get_fruit_load_list(new_fruit):
+#def get_fruit_load_list(new_fruit):
+#        with my_cnx.cursor() as my_cur:
+#                my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('" "')")
+#                return "Thanks for adding " + new_fruit
+#add_my_fruit = st.text_input('What fruit would you like add?')
+# st.header("The fruit load list contains:")
+#if st.button('Get Fruit list'):
+#        my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+#        my_data_rows = get_fruit_load_list()
+#        my_cnx.close()   
+#        st.dataframe(my_data_rows)       
+        
+ #################################################################ignore the above line it was all trail and error##################################################
+
+
+st.header("The fruit load list contains:")
+#snowflake related function
+def get_fruit_load_list():
         with my_cnx.cursor() as my_cur:
-                my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('" + my_data_rows + "')")
+                my_cur.execute("Select * from fruit load list ")  #here the value passed will serve as the parameter for the funtion
+                return my_cur.fetch_all()
+        
+#add button to load the fruit 
+if st.button('Get fruit load list'):
+        my_cnx= snowflake.connector.connect(**st.secrets["snowflake"])
+        my_data_rows = get_fruit_load_list()
+        st.dataframe(my_data_rows)
+
+# Use a Function and Button to Add the Fruit Name Submissions
+def insert_row_snowflake(new_fruit):
+        with my_cnx.cursor() as my_cur:
+                my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('" from st "')")
                 return "Thanks for adding " + new_fruit
 add_my_fruit = st.text_input('What fruit would you like add?')
-if st.button('Get Fruit list'):
-        my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-        my_data_rows = get_fruit_load_list()
-        my_cnx.close()   
-        st.dataframe(my_data_rows)       
-        
-                
+if st.button('Add a fruit to the list'):
+        my_cnx= snowflake.connector.connect(**st.secrets["snowflake"])
+        back_from_function = insert_row_snowflake()
+        st.text(back_from_function)
+
+
         
 
 
