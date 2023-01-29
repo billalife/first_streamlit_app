@@ -65,7 +65,7 @@ st.dataframe(fruits_to_show)  #Display a dataframe as an interactive table.
 
 #MAKING A FUNCTION which move several lines of code into a little group of code called a function, repeatable block of code (function)
 def get_fruityvice_data(this_fruit_choice):
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit" + this_fruit_choice) 
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/all" + this_fruit_choice) 
         fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
         return (fruityvice_normalized)
 st.header("Fruityvice Fruit Advice!")
@@ -141,7 +141,7 @@ if st.button('Get fruit load list'):
 # Use a Function and Button to Add the Fruit Name Submissions
 def insert_row_snowflake(new_fruit):
         with my_cnx.cursor() as my_cur:
-                my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('" from st "')")
+                my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('from st')")
                 return "Thanks for adding " + new_fruit
 add_my_fruit = st.text_input('What fruit would you like add?')
 if st.button('Add a fruit to the list'):
