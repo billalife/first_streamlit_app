@@ -125,7 +125,7 @@ except URLError as e:
  #################################################################ignore all the fucntions which were made earlier##################################################
 
 
-st.header("The fruit load list contains:")
+st.header("View Our Fruit List - Add Your Favourites!")
 #snowflake related function
 def get_fruit_load_list():
         with my_cnx.cursor() as my_cur:
@@ -136,6 +136,7 @@ def get_fruit_load_list():
 if st.button('Get fruit load list'):
         my_cnx= snowflake.connector.connect(**st.secrets["snowflake"])
         my_data_rows = get_fruit_load_list()
+        my_cnx.close()
         st.dataframe(my_data_rows)
 
 # Use a Function and Button to Add the Fruit Name Submissions
