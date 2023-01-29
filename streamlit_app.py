@@ -112,7 +112,7 @@ if st.button('Get Fruit load list'):
 #Adding a new function for the final block to select fruits
 def insert_row_nowflake(new_fruit):
         with my_cnx.cursor() as my_cur:
-                my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values (' + add_my_fruit + ')")
+                my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('" + my_data_rows + "')")
                 return "Thanks for adding " + new_fruit
 add_my_fruit = st.text_input('What fruit would you like add?')
 if st.button('Get Fruit list'):
