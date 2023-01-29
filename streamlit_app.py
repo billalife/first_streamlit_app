@@ -98,7 +98,7 @@ def get_fruit_list():
                 return my_cur.fetchall()  #fetches all records from fruit_load_list table
 #add a button to load the fruit                
 if st.button('Get Fruit load list'):
-        my_cnx = sc.connect(**st.secrets["snowflake"])
+        my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
         my_data_rows = get_fruit_list()
         st.dataframe(my_data_rows)        
 
