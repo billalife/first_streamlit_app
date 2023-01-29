@@ -77,6 +77,7 @@ try:
                 back_from_function = get_fruityvice_data(fruit_choice)
                 st.dataframe(back_from_function)
 #dont run anything post this point or troublshooting 
+st.error()
 st.stop()
 
 #sending message from snowflake i.e checking if the connection works, from here to line 88 got changed into a function
