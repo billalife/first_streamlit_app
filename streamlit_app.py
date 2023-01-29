@@ -77,7 +77,7 @@ try:
                 back_from_function = get_fruityvice_data(fruit_choice)
                 st.dataframe(back_from_function)
 #dont run anything post this point or troublshooting 
-st.stop()
+#st.stop()
 
 #sending message from snowflake i.e checking if the connection works
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
