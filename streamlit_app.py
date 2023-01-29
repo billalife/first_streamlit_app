@@ -63,3 +63,6 @@ st.text(my_data_rows)
 
 add_my_fruit = st.text_input('What fruit would you like add?','Jackfruit')
 st.write("Thanks for adding ", add_my_fruit)
+
+#Understanding Control flow 
+my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values ('from st')") 
