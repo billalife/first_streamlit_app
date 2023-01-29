@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
-import snowflake.connector 
 import requests
+import snowflake.connector 
 from urllib.error import URLERROR
 
 st.title('My Mom\'s New Healthy Diner') #special characters handling are to done with '\'
