@@ -133,7 +133,7 @@ def get_fruit_load_list():
                 return my_cur.fetchall()
         
 #add button to load the fruit 
-if st.button('Get fruit load list'):
+if st.button('Get fruit list'):
         my_cnx= snowflake.connector.connect(**st.secrets["snowflake"])
         my_data_rows = get_fruit_load_list()
         my_cnx.close()
