@@ -93,10 +93,10 @@ except URLError as e:
 st.header("The fruit load list contains:")
 #Snowflake-related function
 def get_fruit_list():
-        with my_cnx.cursor() as my_cur:
-                my_cur.execute("SELECT * from fruit_load_list")
-                retrun my_cur.fetchall()  #fetches all records from fruit_load_list table
-add a button to load the fruit                
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("SELECT * from fruit_load_list")
+        retrun my_cur.fetchall()  #fetches all records from fruit_load_list table
+#add a button to load the fruit                
 if st.button('Get Fruit load list'):
         my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
         my_data_rows = get_fruit_list()
