@@ -100,9 +100,7 @@ def get_fruit_list():
 if st.button('Get Fruit load list'):
         my_cnx = sc.connect(**st.secrets["snowflake"])
         my_data_rows = get_fruit_list()
-        st.dataframe(my_data_rows)
-except URLError as e:
-        st.error()        
+        st.dataframe(my_data_rows)        
 
 #adding new box for the user to pick fruits, Allow the end user to add fruit 
 #add_my_fruit = st.text_input('What fruit would you like add?','Jackfruit')
