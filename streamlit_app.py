@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import snowflake.connector 
+import requests
+from urllib.error import URLERROR
 
 st.title('My Mom\'s New Healthy Diner') #special characters handling are to done with '\'
 
@@ -42,7 +44,7 @@ fruit_choice = st.text_input('What fruit would you like information about?','Kiw
 st.write('The user entered ', fruit_choice)
 
 
-import requests
+
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit")
 
 
@@ -50,6 +52,9 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit")
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 #Display a dataframe as an interactive table.
 st.dataframe(fruityvice_normalized)
+
+#dont run anything post this point or troublshooting 
+st.stop()
 
 #sending message from snowflake i.e checking if the connection works
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
