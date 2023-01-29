@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
-import snowflake.connector as sc
+import snowflake.connector 
 from urllib.error import URLError
 
 st.title('My Mom\'s New Healthy Diner') #special characters handling are to done with '\'
@@ -95,7 +95,7 @@ st.header("The fruit load list contains:")
 def get_fruit_list():
         with my_cnx.cursor() as my_cur:
                 my_cur.execute("SELECT * from fruit_load_list")
-                retrun my_cur.fetchall()  #fetches all records from fruit_load_list table
+                return my_cur.fetchall()  #fetches all records from fruit_load_list table
 #add a button to load the fruit                
 if st.button('Get Fruit load list'):
         my_cnx = sc.connect(**st.secrets["snowflake"])
