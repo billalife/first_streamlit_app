@@ -122,15 +122,15 @@ except URLError as e:
 #        my_cnx.close()   
 #        st.dataframe(my_data_rows)       
         
- #################################################################ignore the above line it was all trail and error##################################################
+ #################################################################ignore all the fucntions which were made earlier##################################################
 
 
 st.header("The fruit load list contains:")
 #snowflake related function
 def get_fruit_load_list():
         with my_cnx.cursor() as my_cur:
-                my_cur.execute("Select * from fruit load list ")  #here the value passed will serve as the parameter for the funtion
-                return my_cur.fetch_all()
+                my_cur.execute("select * from fruit_load_list ")  #here the value passed will serve as the parameter for the funtion
+                return my_cur.fetchall()
         
 #add button to load the fruit 
 if st.button('Get fruit load list'):
