@@ -59,3 +59,8 @@ my_data_rows = my_cur.fetchall() #fetches all records from fruit_load_list table
 st.text("The fruit load list contains:")
 st.text(my_data_rows)
 
+#adding new box for the user to pick fruits, Allow the end user to add fruit 
+
+add_my_fruit = st.text_input('What fruit would you like add?','Jackfruit')
+st.write('The user entered ', add_my_fruit)
+st.text("Thanks for adding",add_my_fruit)
