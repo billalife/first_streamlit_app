@@ -63,4 +63,4 @@ st.text(my_data_rows)
 
 add_my_fruit = st.text_input('What fruit would you like add?','Jackfruit')
 st.write('The user entered ', add_my_fruit)
-st.text("Thanks for adding", :add_my_fruit:)
+st.write("Thanks for adding ", add_my_fruit)
