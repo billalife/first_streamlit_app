@@ -115,10 +115,11 @@ def insert_row_nowflake(new_fruit):
                 my_cur.execute( "insert into pc_rivery_db.public.fruit_load_list values (' + add_my_fruit + ')")
                 return "Thanks for adding " + new_fruit
 add_my_fruit = st.text_input('What fruit would you like add?')
-if st.button('Add a fruit to the list'):
+if st.button('Get Fruit list'):
         my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-        back_from_function = insert_row_nowflake(fruit_choice)   
-        st.write("Thanks for adding ", add_my_fruit)       
+        my_data_rows = get_fruit_load_list()
+        my_cnx.close()   
+        st.dataframe(my_data_rows)       
         
                 
         
