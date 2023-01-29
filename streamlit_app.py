@@ -51,17 +51,31 @@ st.dataframe(fruits_to_show)  #Display a dataframe as an interactive table.
 #st.dataframe(fruityvice_normalized)
 
 #making an if else statement to display frutiyvice api response (from line 41 to 52)
-st.header("Fruityvice Fruit Advice!") #adding header
+#st.header("Fruityvice Fruit Advice!") #adding header
+#try:
+#        fruit_choice = st.text_input('What fruit would you like information about?')
+#        if not fruit_choice:
+#                st.error("Please select a fruit to get information")
+#        else:
+#                fruityvice_response = requests.get("https://fruityvice.com/api/fruit" + fruit_choice)
+#                fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+#                st.dataframe(fruityvice_normalized)
+#except URLError as e:
+#        st.error()
+
+#MAKING A FUNCTION which move several lines of code into a little group of code called a function, repeatable block of code (function)
+def get_fruityvice_data(this_fruit_choice):
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit" + this_fruit_choice) 
+        fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+        return (fruityvice_normalized)
+st.header("Fruityvice Fruit Advice!")
 try:
         fruit_choice = st.text_input('What fruit would you like information about?')
         if not fruit_choice:
                 st.error("Please select a fruit to get information")
         else:
-                fruityvice_response = requests.get("https://fruityvice.com/api/fruit" + fruit_choice)
-                fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-                st.dataframe(fruityvice_normalized)
-except URLError as e:
-        st.error()
+                back_from_function = get_fruityvice_data(fruit_choice)
+                st.dataframe(back_from_function)
 #dont run anything post this point or troublshooting 
 st.stop()
 
